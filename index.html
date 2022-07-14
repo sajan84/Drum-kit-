@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Drum Kit</title>
+</head>
+<body>
+    <div class="data-keysss">
+        <div data-key="65" class="keys">
+            <kbd>A</kbd>
+        </div>
+        <div data-key="83" class="keys">
+            <kbd>S</kbd>
+        </div>
+        <div data-key="68" class="keys">
+            <kbd>D</kbd>
+        </div>
+        <div data-key="70" class="keys">
+            <kbd>F</kbd>
+        </div>
+        <div data-key="71" class="keys">
+            <kbd>G</kbd>
+        </div>
+        <div data-key="72" class="keys">
+            <kbd>H</kbd>
+        </div>
+        <div data-key="74" class="keys">
+            <kbd>J</kbd>
+        </div>
+
+    </div>
+    
+
+    <audio src="crash.mp3" data-key="A"></audio>
+    <audio src="/kick-bass.mp3" data-key="S"></audio>
+    <audio src="/snare.mp3" data-key="D"></audio>
+    <audio src="/tom-1.mp3" data-key="F"></audio>
+    <audio src="/tom-2.mp3" data-key="G"></audio>
+    <audio src="/tom-3.mp3" data-key="H"></audio>
+    <audio src="/tom-4.mp3" data-key="J"></audio>
+
+    <script>
+        window.addEventListener('keydown',e=>{
+            console.log(e.keyCode)
+            const audio=document.querySelector(`audio[data-key="${e.keyCode}"]`)
+            const key=document.querySelector(`.keys[data-key="${e.keyCode}"`)
+           if(!audio){
+            return;
+           }
+            audio.play();
+            key.classList.add('key_run');
+        })
+    </script>
+</body>
+</html>
