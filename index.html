@@ -34,25 +34,33 @@
     </div>
     
 
-    <audio src="crash.mp3" data-key="A"></audio>
-    <audio src="/kick-bass.mp3" data-key="S"></audio>
-    <audio src="/snare.mp3" data-key="D"></audio>
-    <audio src="/tom-1.mp3" data-key="F"></audio>
-    <audio src="/tom-2.mp3" data-key="G"></audio>
-    <audio src="/tom-3.mp3" data-key="H"></audio>
-    <audio src="/tom-4.mp3" data-key="J"></audio>
+    <audio src="/crash.mp3" data-key="65"></audio>
+    <audio src="/kick-bass.mp3" data-key="83"></audio>
+    <audio src="/snare.mp3" data-key="68"></audio>
+    <audio src="/tom-1.mp3" data-key="70"></audio>
+    <audio src="/tom-2.mp3" data-key="71"></audio>
+    <audio src="/tom-3.mp3" data-key="72"></audio>
+    <audio src="/tom-4.mp3" data-key="74"></audio>
 
     <script>
+        
         window.addEventListener('keydown',e=>{
-            console.log(e.keyCode)
+            
+          
             const audio=document.querySelector(`audio[data-key="${e.keyCode}"]`)
             const key=document.querySelector(`.keys[data-key="${e.keyCode}"`)
-           if(!audio){
-            return;
-           }
             audio.play();
+            audio.currentTime=0;
             key.classList.add('key_run');
+            function transitionRemove(e) {
+               this.classList.remove('key_run')
+            }
+            const keys=document.querySelectorAll('.keys')
+            keys.forEach(event=> event.addEventListener('transitionend',transitionRemove))
+            
         })
+       
+
     </script>
 </body>
 </html>
